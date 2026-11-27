@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--HEAD-START-->
+<title>BBN Website Preview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#161b45">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;600&display=swap">
+<!--HEAD-END-->
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<!--BODY-START-->
+<a class="skip" href="#app">Skip to content</a>
+<div class="ribbon"><div class="wrap"><span>Private preview. Sample data and simulated services. Nothing here is live.</span><a href="#demo">Demo guide and open items</a></div></div>
+<header class="site-head night"><nav class="nav wrap" aria-label="Main">
+  <a class="brand" href="#home"><img src="assets/bbn-logo-icon-reversed.svg" alt="" width="40" height="40"><span>Big Bully Networx</span></a>
+  <div class="links">
+    <a href="#home-fibre">Home Fibre</a>
+    <a href="#business">Business</a>
+    <a href="#estates">Estates &amp; Buildings</a>
+    <a href="#support">Support</a>
+    <a href="#account">My Account</a>
+  </div>
+  <a class="btn" href="#coverage">Check Coverage</a>
+</nav></header>
+<main id="app" tabindex="-1"></main>
+<footer class="site-foot night"><div class="wrap">
+  <div class="footgrid">
+    <div><img src="assets/bbn-logo-reversed.svg" alt="Big Bully Networx" width="150"></div>
+    <div><h3>Get connected</h3><ul><li><a href="#coverage">Check Coverage</a></li><li><a href="#home-fibre">Home Fibre</a></li><li><a href="#business">Business</a></li><li><a href="#estates">Estates &amp; Buildings</a></li><li><a href="#interest">Bring BBN fibre to my building</a></li></ul></div>
+    <div><h3>Subscriber Help</h3><ul><li><a href="#status">Network Status</a></li><li><a href="#fault">Report a fault</a></li><li><a href="#account">My Account</a></li><li><a href="#guides">Guides</a></li></ul></div>
+    <div><h3>Policies</h3><ul><li><a href="#legal">Service terms and privacy</a></li><li><a href="#legal">Acceptable Use Policy</a></li><li><a href="#legal">Lawful use and streaming</a></li><li><a href="#legal">Complaints procedure</a></li></ul></div>
+  </div>
+  <div class="legalline"><span>© 2026 Big Bully Networx (Pty) Ltd · Reg. 2019/519743/07</span><span>Preview build. Not the live BBN website.</span><a href="#staff">Staff demo</a></div>
+</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<!--BODY-END-->
+<script src="js/data.js"></script>
+<script src="js/register.js"></script>
+<script src="js/store.js"></script>
+<script src="js/core.js"></script>
+<script src="js/views-public.js"></script>
+<script src="js/views-journeys.js"></script>
+<script src="js/views-staff.js"></script>
+<script>BBN.start();</script>
+<script src="vendor/qrcode.js" async onload="if(location.hash==='#demo')BBN.rerender()"></script>
+</body>
+</html>
