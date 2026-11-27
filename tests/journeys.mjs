@@ -191,8 +191,23 @@ async function verify(page) { const code = await text(page, '#demo-code'); await
   await page.context().close();
 }
 
+/* ---------- 3b. staff test page ---------- */
+{
+  const { page, errors } = await fresh();
+  await go(page, 'test'); await page.fill('#ts-name', 'Test Staffer'); await page.press('#ts-name', 'Tab');
+  await page.click('#role-bill'); await page.click('#res-b1-bad'); await page.fill('#note-b1', 'Declined wording too harsh'); await page.press('#note-b1', 'Tab');
+  await page.click('#role-all'); await page.click('#res-a1-ok');
+  await page.reload();
+  const sum = await page.evaluate(() => BBN.testSummary());
+  check('Staff test page keeps results across a reload and builds a feedback summary', sum.includes('Test Staffer') && sum.includes('[PROBLEM]') && sum.includes('Declined wording too harsh') && sum.includes('[WORKS] Sign up as a new resident'));
+  await page.click('[data-act=testShow]');
+  check('Feedback text is shown for copying by hand', (await page.inputValue('#ts-out')).includes('BILLING'));
+  check('No script errors on the staff test page', errors.length === 0, errors.join(' | '));
+  await page.context().close();
+}
+
 /* ---------- 4. layout at phone, fold and desktop widths; keyboard; reduced motion; slow data ---------- */
-const VIEWS = ['home', 'coverage', 'building-lighthouse-court', 'signup', 'status', 'fault', 'support', 'account', 'business', 'estates', 'guides', 'film', 'stories', 'legal', 'interest', 'staff', 'demo'];
+const VIEWS = ['home', 'coverage', 'building-lighthouse-court', 'signup', 'status', 'fault', 'support', 'account', 'business', 'estates', 'guides', 'film', 'stories', 'legal', 'interest', 'staff', 'demo', 'test'];
 const SIZES = [['small phone 320', 320, 640], ['iPhone 390', 390, 844], ['Fold7 folded (approx. 373)', 373, 860], ['Fold7 unfolded (approx. 690)', 690, 790], ['desktop 1280', 1280, 800]];
 for (const [label, w, h] of SIZES) {
   const { page, errors } = await fresh({ viewport: { width: w, height: h } });
@@ -207,7 +222,7 @@ for (const [label, w, h] of SIZES) {
   await page.keyboard.press('Tab');
   check('Keyboard: first Tab lands on "Skip to content"', await page.evaluate(() => document.activeElement.className) === 'skip');
   const seen = [];
-  for (let i = 0; i < 12; i++) { await page.keyboard.press('Tab'); seen.push(await page.evaluate(() => { const e = document.activeElement, s = getComputedStyle(e); return { t: (e.innerText || e.id || e.tagName).trim().slice(0, 24), outline: s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) >= 2 }; })); }
+  for (let i = 0; i < 13; i++) { await page.keyboard.press('Tab'); seen.push(await page.evaluate(() => { const e = document.activeElement, s = getComputedStyle(e); return { t: (e.innerText || e.id || e.tagName).trim().slice(0, 24), outline: s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) >= 2 }; })); }
   check('Keyboard: every focused control has a visible focus ring', seen.every(s => s.outline), seen.filter(s => !s.outline).map(s => s.t).join(', '));
   check('Keyboard: nav, Check Coverage, building search and subscriber links are reachable in order', ['Home Fibre', 'Check Coverage', 'hq', 'Check an outage'].every(t => seen.some(s => s.t.startsWith(t))), seen.map(s => s.t).join(' > '));
   await page.focus('#hq'); await page.keyboard.type('gardens'); await page.keyboard.press('Tab'); await page.keyboard.press('Enter'); await page.waitForSelector('#unit');

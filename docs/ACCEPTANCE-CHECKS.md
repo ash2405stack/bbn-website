@@ -1,7 +1,7 @@
 # Acceptance checks
 
 Last run: 27 November 2026, headless Chromium (Playwright), against `site/` served locally.
-Result: **81 of 81 automated checks passed** (`node tests/journeys.mjs`).
+Result: **84 of 84 automated checks passed** (`node tests/journeys.mjs`).
 
 ## What was actually run (automated, desktop Chromium)
 
@@ -14,7 +14,7 @@ Result: **81 of 81 automated checks passed** (`node tests/journeys.mjs`).
 | Box QR | Prefills building and unit, shows no personal data; unregistered reference explains the manual route; hand-typed reference in any spacing or case |
 | Interest | Unlisted building, receipt without a coverage promise, share link, one demand record per building |
 | Subscriber | Status reached in one tap, filtered in two; unavailable feed not shown as clear; known outage shown before the fault form; accepted fault gives a reference; rejected fault gives none and keeps what was typed |
-| Layout | No sideways scrolling on 17 pages at 320, 390, 373, 690 and 1280 px wide |
+| Layout | No sideways scrolling on 18 pages at 320, 390, 373, 690 and 1280 px wide |
 | Keyboard | Skip link first, visible focus ring on every control tabbed, search to unit to plan with keyboard only |
 | Reduced motion | The one animation is switched off |
 | Slow data | Throttled to about 400 kbit/s with 400 ms latency and fonts blocked: headline and actions visible in about 6 s, uncompressed. Site code is about 46 KB when compressed, so a host with compression should be much faster. Not yet measured on a real host |

@@ -23,6 +23,7 @@ Open http://localhost:4173/ . To test on a phone on the same Wi-Fi, open `http:/
 | Building not connected: register interest, share link | `#interest` |
 | Subscriber: outage lookup, troubleshooter, fault report, My Account | `#status`, `#fault`, `#account` |
 | Staff demo: review queue, notices, field updates | `#staff` |
+| Staff test page: role-based test scripts and a feedback summary to send to Ash | `#test` |
 | Demo checklist, sample QR codes, staff-control list, open-item register | `#demo` |
 
 Sample units at Lighthouse Court: `102` fibre point on record, `204` needs a check, `305` new installation, `306` survey and permission needed. Any other number is treated as "needs a check".
@@ -37,7 +38,7 @@ Sample units at Lighthouse Court: `102` fibre point on record, `204` needs a che
 | `site/js/core.js` | Router, form validation, form recovery |
 | `site/js/views-*.js` | Pages: public, journeys, staff and demo |
 | `site/css/app.css` | Styles, on BBN Brand Kit v2.1 tokens (light and dark) |
-| `tests/journeys.mjs` | 81 automated checks of both journeys, layout, keyboard, reduced motion and slow data |
+| `tests/journeys.mjs` | 84 automated checks of both journeys, layout, keyboard, reduced motion and slow data |
 | `tools/` | Preview build, register export, production gate |
 | `docs/ACCEPTANCE-CHECKS.md` | What was actually tested, and what still needs a real device |
 
